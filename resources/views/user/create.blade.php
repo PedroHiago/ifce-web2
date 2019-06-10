@@ -28,8 +28,10 @@
 
                      <div class="row">
                         <div class="col-md-12">
-                            {{  Form::submit('salvar', ['class' => 'btn btn-primary']) }}
-                            <a href="/user/index" class="btn btn-danger">Cancelar</a>
+                            <button class="btn btn-primary">Salvar</button>
+                            <a href="/user/index">
+                                <button class="btn btn-danger">Cancelar</button>
+                            </a>
                         </div>
                     </div>
                     </div>
