@@ -6,13 +6,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
+Route::get('/user/index', function () {
+    return view('user.index');
+});
 
-   Route::get('bookings', 'BookingsController@index');
-   Route::get('bookings/create', 'BookingsController@create');
+Route::get('/user/create', function () {
+    return view('user.create');
+});
 
+Route::get('/admin/index', function () {
+    return view('admin.index');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
