@@ -45,10 +45,46 @@
                                     
                                 </table>
 
+                                <div class="d-flex">
+                            <div class="p-2">
+                                <label class="" for="data_reserva">Lista de Reservas</label>
+                            </div>
+                        </div>
+                                 
+                        <div class="form-group col-12 row">
+
+                                <table class=" table table-striped table-hover">
+
+                                    <thead>
+                                    <tr>
+                                        <th width="200">Sala</th>
+                                        <th width="200">Reservada para</th>
+                                        <th width="200">Reservada por</th>
+                                    
+                                    </tr>
+                                    </thead>
+
+                                    <tr>
+                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Nome da Sala" value="Sala01"></th>
+                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="05/06/2019" value=""></th>
+                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Ninguém" value=""></th>
+                                        <th width="200"><button class="btn btn-warning">Finalizar Reserva</button></th>
+                                    
+                                    </tr>
+                                    
+                                    
+                                </table>
+
+                                
+                                </div>
+
+
                         
                         </div>
                         
                     </div>
+
+                    
                 </div>
             </div>
         </div>

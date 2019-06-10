@@ -34,9 +34,19 @@
                                     <tr>
                                         <th width="200">Sala</th>
                                         <th width="200">Status</th>
+                                        <th width="200">Reservada por</th>
                                     
                                     </tr>
                                     </thead>
+
+                                    <tr>
+                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Nome da Sala" value="Sala01"></th>
+                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Disponível" value=""></th>
+                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Ninguém" value=""></th>
+                                        
+                                    
+                                    </tr>
+                                    
                                     
                                 </table>
 
