@@ -11,34 +11,12 @@
                          <div class="panel-body">
 
                             {{  Form::open() }}
+                                                      
+                              <div class="form-group col-4 row">
+                                <label for="data_reserva">Dia da reserva:</label>
+                                <input type="date" value="<?php echo date('d-m-y'); ?>" class="form-control" name="data_reserva" min="<?php echo $today = date("Y-m-d"); ?>" max="<?php echo date("Y-m-d", strtotime('+7 days'));?>">
 
-                                <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group"> 
-                                    {{  Form::label('date_start', 'Início', ['class' => 'control-label']) }} 
-                                     <div class='input-group date' id='date_start'>
-                                        {{  Form::text('date_start', null, ['class' => 'form-control']) }}
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-        
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group {{ ($errors->has('date_end') ? 'has-error' :'') }}"> 
-                                    {{  Form::label('date_end', 'Término', ['class' => 'control-label']) }} 
-                                    <div class='input-group date' id='date_end'>
-                                        {{  Form::text('date_end', null, ['class' => 'form-control']) }}
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        <span>
-                                    </div>
-                                    </div>
-                                    <span class="help-block">{!! $errors->first('date_end') !!}</span>
-                                </div>
+                              </div>
                         </div>
 
                     <div class="row">
@@ -50,18 +28,7 @@
                                 </div>
                             </div>
                     </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group {{ ($errors->has('participants') ? 'has-error' :'') }}">
-                                    {{  Form::label('participants', 'participantes', ['class' => 'control-label']) }}
-                                    {{  Form::select('participants[]', [], null, ['class' => 'form-control', 'multiple', 'size' => 10]) }}
-                                    <span class="help-block">{!! $errors->first('participants') !!}</span>
-                                </div>
-                            <div>
-                        </div>
-
-                        <div class="row">
+                     <div class="row">
                             <div class="col-md-12">
                                 {{  Form::submit('salvar', ['class' => 'btn btn-primary']) }}
                                 <a href="" class="btn btn-danger">Cancelar</a>

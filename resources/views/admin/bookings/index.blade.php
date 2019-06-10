@@ -10,18 +10,21 @@
 
                     <div class="panel-body">
 
-                        <a href="" class="btn btn-primary">Nova Reserva</a>
+                        
+                            <div class="form-group col-4 row">
+                                <label for="data_reserva">Listar reservas:</label>
+                                <input type="date" value="<?php echo date('d-m-y'); ?>" class="form-control" name="data_reserva" min="<?php echo $today = date("Y-m-d"); ?>" max="<?php echo date("Y-m-d", strtotime('+7 days'));?>">
+                               <input type="submit" class="btn btn-success" value="buscar">
+                              </div>
+
+                              <a href="" class="btn btn-primary">Nova Reserva</a><br><br>
 
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th width="1">Inicio</th>
-                                <th width="1">Término</th>
-                                <th width="200">Sala</th>
-                                <th width="200">Responsável</th>
-                                <th>Participantes</th>
-                                <th width="120">Ações</th>
-
+                                 <th width="200">Sala</th>
+                                <th width="200">Status</th>
+                              
                             </tr>
                             </thead>
                              
