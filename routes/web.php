@@ -2,6 +2,10 @@
 
 
 
+Auth::routes();
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,11 +22,10 @@ Route::get('/user/create', function () {
     return view('user.create');
 });
 
-Route::get('/admin/index', function () {
-    return view('admin.index');
-});
-
-Auth::routes();
 
 Route::resource('admin', 'SalaController');
 Route::resource('reservas','ReservaController');
+
+Route::get('/admin', 'SalaController@index')->name('admin');
+
+Route::get('admin/destroy/{id}', 'SalaController@destroy');

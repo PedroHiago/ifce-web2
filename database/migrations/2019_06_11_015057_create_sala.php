@@ -13,10 +13,12 @@ class CreateSala extends Migration
      */
     public function up()
     {
-        Schema::create('Sala', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('sala', function (Blueprint $table) { //alteraçãp
+            $table->bigIncrements('id'); //alteração
+            $table->string('nome'); //alteração
             $table->timestamps();
         });
+
     }
 
     /**
@@ -26,6 +28,6 @@ class CreateSala extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Sala');
+        Schema::dropIfExists('sala'); //alteração
     }
 }

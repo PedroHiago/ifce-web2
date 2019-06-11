@@ -71,7 +71,7 @@
                                   User
                                 </button>
                                 </a>
-                    <a href="/admin/index">
+                    <a href="/admin">
                                 <button type="submit" class="btn btn-primary">
                                   Admin
                                 </button>

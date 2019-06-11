@@ -26,7 +26,8 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">Adicionar</button>
                                 </form>
-
+                                
+                                
                                 <table class="mt-5 table table-striped table-hover">
 
                                     <thead>
@@ -35,13 +36,28 @@
                                     
                                     </tr>
                                     </thead>
-
+                                    @if ($salas->isEmpty())
+                                        <p>Não há Salas</p>
+                                    @else
+                                    @foreach ($salas as $item)
                                     <tr>
-                                        <th width="200"><input type="text" class="form-control" id="name" placeholder="Nome da Sala" value="Sala01"></th>
-                                        <th width="200"><button class="btn btn-info">atualizar</button></th>
-                                        <th width="200"><button class="btn btn-danger">Excluir</button></th>
+                                            <form action="{{ route('admin.update',$item->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                <input type="hidden" name="id" class="form-control" id="id" placeholder="Nome da Sala" value="{{ $item->id }}">
+                                                <th width="200"><input type="text" name="nome" class="form-control" id="nome" placeholder="Nome da Sala" value="{{ $item->nome }}"></th>
+                                                </form>
+                                                <th width="200"><button type="submit" class="btn btn-info">Atualizar</button></th>
+                                                <th width="200"><form action="{{ route('admin.destroy', $item->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger" type="submit">Excluir</button>
+                                                    </form>
+                                                </th>                                    
+                                    </tr>  
+                                    @endforeach
                                     
-                                    </tr>
+                                    @endif
                                     
                                 </table>
 
@@ -49,8 +65,7 @@
                             <div class="p-2">
                                 <label class="" for="data_reserva">Lista de Reservas</label>
                             </div>
-                        </div>
-                                 
+                        </div>                                 
                         <div class="form-group col-12 row">
 
                                 <table class=" table table-striped table-hover">

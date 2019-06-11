@@ -54,7 +54,7 @@ class SalaController extends Controller
                 'nome' => $request->get('nome'),
             ]);
             $sala->save();
-            return redirect('/home')->with('success', 'Sala Cadastrada com Sucesso!');
+            return redirect('/admin')->with('success', 'Sala Cadastrada com Sucesso!'); //alteração
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -100,8 +100,9 @@ class SalaController extends Controller
             $request->validate([
                 'nome' => 'required',
             ]);
+            $id = $request->input('id');
             $sala = Sala::find($id);
-            $sala->nome = $request->get('nome');
+            $sala->nome = $request->input('nome');
             $sala->save();
             return redirect('/salas')->with('success', 'Sala Atualizada com Sucesso!');
         } catch (\Throwable $th) {
@@ -118,14 +119,11 @@ class SalaController extends Controller
     public function destroy($id)
     {
         try {
-            if(Sala::where('sala_id', $id)->count() > 0){
-                return redirect('/salas')->with('mensagem', 'Sala que deseja excluir participa de uma reserva!');
-            }else{
+            
                 $data = Sala::findOrFail($id);
                 $data->delete();
-
-                return redirect('/salas')->with('mensagem1', 'Sala Excluída com Sucesso!');
-            }
+                return redirect('/admin')->with('mensagem', 'Sala Excluída com Sucesso!');
+            
         } catch (\Throwable $th) {
             throw $th;
         }
