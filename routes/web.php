@@ -23,3 +23,6 @@ Route::get('/admin/index', function () {
 });
 
 Auth::routes();
+
+Route::resource('salas', 'SalaController');
+Route::resource('reservas','ReservaController');

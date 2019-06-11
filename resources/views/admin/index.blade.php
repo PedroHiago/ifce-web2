@@ -19,10 +19,10 @@
                                     </thead>
                                     
                                 </table>
-                                <form class="form-inline">
+                                <form class="form-inline" method="POST" action="{{ route('salas.store') }}"> @csrf
                                     <div class="form-group mx-sm-3">
-                                        <label for="inputPassword2" class="sr-only">Password</label>
-                                        <input type="text" class="form-control" id="nomes" placeholder="Nome da sala">
+                                        <label for="nome" class="sr-only">Nome</label>
+                                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da sala">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Adicionar</button>
                                 </form>
