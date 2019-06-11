@@ -24,5 +24,5 @@ Route::get('/admin/index', function () {
 
 Auth::routes();
 
-Route::resource('salas', 'SalaController');
+Route::resource('admin', 'SalaController');
 Route::resource('reservas','ReservaController');
