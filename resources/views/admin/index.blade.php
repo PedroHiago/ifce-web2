@@ -19,7 +19,7 @@
                                     </thead>
                                     
                                 </table>
-                                <form class="form-inline" method="POST" action="{{ route('salas.store') }}"> @csrf
+                                <form class="form-inline" method="POST" action="{{ route('admin.store') }}"> @csrf
                                     <div class="form-group mx-sm-3">
                                         <label for="nome" class="sr-only">Nome</label>
                                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da sala">
