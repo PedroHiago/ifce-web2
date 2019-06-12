@@ -54,7 +54,7 @@ class SalaController extends Controller
                 'nome' => $request->get('nome'),
             ]);
             $sala->save();
-            return redirect('/admin')->with('success', 'Sala Cadastrada com Sucesso!'); //alteração
+            return redirect('/admin')->with('message', 'Sala Cadastrada com Sucesso!');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -100,11 +100,10 @@ class SalaController extends Controller
             $request->validate([
                 'nome' => 'required',
             ]);
-            $id = $request->input('id');
             $sala = Sala::find($id);
-            $sala->nome = $request->input('nome');
+            $sala->nome = $request->get('nome');
             $sala->save();
-            return redirect('/salas')->with('success', 'Sala Atualizada com Sucesso!');
+            return redirect('/admin')->with('message', 'Sala Atualizada com Sucesso!');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -122,7 +121,8 @@ class SalaController extends Controller
             
                 $data = Sala::findOrFail($id);
                 $data->delete();
-                return redirect('/admin')->with('mensagem', 'Sala Excluída com Sucesso!');
+
+                return redirect('/admin')->with('message', 'Sala Excluída com Sucesso!');
             
         } catch (\Throwable $th) {
             throw $th;

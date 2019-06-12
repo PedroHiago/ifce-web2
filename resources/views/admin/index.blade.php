@@ -8,6 +8,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">criar, atualizar e excluir Salas</div>
                     <div class="panel-body">
+                    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
                         <div class="form-group col-12 row">
                                     <table class=" table table-striped table-hover">
 
@@ -41,20 +46,24 @@
                                     @else
                                     @foreach ($salas as $item)
                                     <tr>
-                                            <form action="{{ route('admin.update',$item->id) }}" method="POST">
+                                                <th width="200">
+                                                    <form class="form-inline" action="{{ route('admin.update', $item->id) }}" method="POST">
                                                     @csrf
-                                                    @method('PATCH')
-                                                <input type="hidden" name="id" class="form-control" id="id" placeholder="Nome da Sala" value="{{ $item->id }}">
-                                                <th width="200"><input type="text" name="nome" class="form-control" id="nome" placeholder="Nome da Sala" value="{{ $item->nome }}"></th>
+                                                        @method('PATCH')
+                                                    <div class="form-group">
+                                                        <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome da Sala" value="{{ $item->nome }}">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-info">Atualizar</button>
+                                                    
                                                 </form>
-                                                <th width="200"><button type="submit" class="btn btn-info">Atualizar</button></th>
+                                                </th>
                                                 <th width="200"><form action="{{ route('admin.destroy', $item->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit">Excluir</button>
                                                     </form>
                                                 </th>                                    
-                                    </tr>  
+                                    </tr>    
                                     @endforeach
                                     
                                     @endif
