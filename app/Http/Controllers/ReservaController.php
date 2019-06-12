@@ -16,8 +16,8 @@ class ReservaController extends Controller
     public function index()
     {
         try {
-            $salas = Sala::all();
-            return view('salas.index', compact('salas'));
+            $reservas = Reserva::where('user_id',auth()->user()->id)->get();
+            return view('user.index', compact('reservas'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -32,7 +32,8 @@ class ReservaController extends Controller
     public function create()
     {
         try {
-            return view('salas.create');
+            $salas = Sala::all();
+            return view('user.create', compact('salas'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -48,13 +49,20 @@ class ReservaController extends Controller
     {
         try {
             $request->validate([
-                'nome' => 'required',
+                'sala' => 'required',
+                'data_reserva'=>'required'
             ]);
-            $sala = new Sala([
-                'nome' => $request->get('nome'),
+            $reserva = new Reserva([
+                'sala_id' => $request->get('sala'),
+                'data_reserva'=>$request->get('data_reserva'),
+                'user_id'=>(auth()->user()->id),
             ]);
-            $sala->save();
-            return redirect('/salas')->with('success', 'Sala Cadastrada com Sucesso!');
+            if((Reserva::where('sala_id', $reserva->sala_id, 'and')->where('data_reserva', $reserva->data_reserva))->count() == 0){
+                $reserva->save();
+                return redirect('/user')->with('message', 'Reserva realizada com sucesso!');
+            }else{
+                return redirect('/user')->with('message', 'Sala já reservada para esta data!');
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -96,7 +104,12 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
+        $sala = $request-> all();
+
+ Sala::find($id)-> update($product);
+ return redirect('/admin')->with('message', 'Success');
+    }
+     /*   try {
             $request->validate([
                 'nome' => 'required',
             ]);
@@ -107,7 +120,7 @@ class ReservaController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
-    }
+    }*/
 
     /**
      * Remove the specified resource from storage.

@@ -9,10 +9,10 @@
                     <div class="panel-heading">criar, atualizar e excluir Salas</div>
                     <div class="panel-body">
                     @if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
                         <div class="form-group col-12 row">
                                     <table class=" table table-striped table-hover">
 
@@ -41,11 +41,16 @@
                                     
                                     </tr>
                                     </thead>
+                                    
                                     @if ($salas->isEmpty())
-                                        <p>Não há Salas</p>
+                                    <tr>
+                                        <th>
+                                            <p>Não há Salas</p>
+                                        </th>
+                                        </tr>
                                     @else
                                     @foreach ($salas as $item)
-                                    <tr>
+                                        <tr>
                                                 <th width="200">
                                                     <form class="form-inline" action="{{ route('admin.update', $item->id) }}" method="POST">
                                                     @csrf
@@ -62,13 +67,13 @@
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit">Excluir</button>
                                                     </form>
-                                                </th>                                    
-                                    </tr>    
-                                    @endforeach
-                                    
+                                                </th>      
+                                                </tr>                              
+                                                @endforeach                                    
                                     @endif
-                                    
+            
                                 </table>
+
 
                                 <div class="d-flex">
                             <div class="p-2">
@@ -80,6 +85,7 @@
                                 <table class=" table table-striped table-hover">
 
                                     <thead>
+                                    
                                     <tr>
                                         <th width="200">Sala</th>
                                         <th width="200">Reservada para</th>
@@ -87,15 +93,13 @@
                                     
                                     </tr>
                                     </thead>
-
+                                    @foreach ($reservas as $reserva)
                                     <tr>
-                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Nome da Sala" value="Sala01"></th>
-                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="05/06/2019" value=""></th>
-                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Ninguém" value=""></th>
-                                        <th width="200"><button class="btn btn-warning">Finalizar Reserva</button></th>
-                                    
+                                        <th width="200">{{$reserva->sala->nome}}</th>
+                                        <th width="200">{{$reserva->data_reserva}}</th>
+                                        <th width="200">{{$reserva->user->name}}</th>                                    
                                     </tr>
-                                    
+                                    @endforeach
                                     
                                 </table>
 

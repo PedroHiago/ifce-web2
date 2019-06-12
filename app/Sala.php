@@ -9,4 +9,8 @@ class Sala extends Model
     protected $fillable = ['nome'];
     protected $table="sala";
     
+    public function reserva()
+    {
+        return $this->hasMany('App\Reserva');
+    }
 }

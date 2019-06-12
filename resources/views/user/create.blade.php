@@ -9,7 +9,8 @@
                     <div class="panel-heading">Reservas / Nova Reserva</div>
 
                          <div class="panel-body">
-
+                            <form action="{{ route('reservas.store') }}" method="POST">
+                            @csrf
                               <div class="form-group col-12 row">
                                 <label for="data_reserva">Dia da reserva:</label>
                                 <input type="date" 
@@ -19,19 +20,17 @@
                                 strtotime('+7 days'));?>">
                                 <br> <br>
                                 <label for="inputState">Salas</label>
-                                    <select id="inputState" class="form-control">
+                                    <select id="inputState" class="form-control" name="sala">
                                         <option selected>Selecione a sala para reserva...</option>
+                                        @foreach ($salas as $sala)
+                                            <option value="{{ $sala->id }}">{{ $sala->nome }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                              
-                        
-
                      <div class="row">
                         <div class="col-md-12">
-                            <button class="btn btn-primary">Salvar</button>
-                            <a href="/user/index">
-                                <button class="btn btn-danger">Cancelar</button>
-                            </a>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <a href="{{ route('user')}}" class="btn btn-danger">Voltar</a>
                         </div>
                     </div>
                     </div>

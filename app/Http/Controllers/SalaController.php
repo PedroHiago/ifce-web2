@@ -16,8 +16,9 @@ class SalaController extends Controller
     public function index()
     {
         try {
+            $reservas = Reserva::all();
             $salas = Sala::all();
-            return view('admin.index', compact('salas'));
+            return view('admin.index', compact('salas','reservas'));
         } catch (\Throwable $th) {
             throw $th;
         }

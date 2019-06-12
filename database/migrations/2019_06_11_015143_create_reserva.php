@@ -13,9 +13,14 @@ class CreateReserva extends Migration
      */
     public function up()
     {
-        Schema::create('Reserva', function (Blueprint $table) {
+        Schema::create('reserva', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('sala_id');
+            $table->unsignedBigInteger('user_id');
+            $table->date('data_reserva');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
+            $table->foreign('sala_id')->references('id')->on('sala')->onDelete("cascade");
         });
     }
 
@@ -26,6 +31,6 @@ class CreateReserva extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Reserva');
+        Schema::dropIfExists('reserva');
     }
 }

@@ -13,65 +13,33 @@
                                 <label class="mt-5" for="data_reserva">Minhas Reservas</label>
                             </div>
                             <div class="ml-auto p-2">
-                                <a href="/user/create" class="mb-5 btn btn-primary">Nova Reserva</a>
+                                <a href="{{ route('criar-reservas')}}" class="mb-5 btn btn-primary">Nova Reserva</a>
                             </div>
                         </div>
-
+                        @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                         <table class=" table table-striped table-hover">
 
                                     <thead>
                                     <tr>
                                         <th width="200">Sala</th>
-                                        <th width="200">Reservada por</th>
+                                        <th width="200">Data</th>
                                     
                                     </tr>
                                     </thead>
-
+                                    @foreach ($reservas as $reserva)
                                     <tr>
-                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Nome da Sala" value="Sala01"></th>
-                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Disponível" value=""></th>
-                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Ninguém" value=""></th>
-                                        
+                                        <th width="200">{{ $reserva->sala->nome}}</th>  
+                                        <th width="200">{{ $reserva->data_reserva}}</th>                            
                                     
                                     </tr>
-                                    
-                                    
+                                    @endforeach
                                 </table>
                                  
-                        <div class="form-group col-12 row">
-                        <label class="mt-5" for="data_reserva">Buscar Reservas Disponíveis</label>
-                                <input type="date" 
-                                value="<?php echo date('d-m-y'); ?>" class="form-control" name="data_reserva" 
-                                min="<?php echo $today = date("Y-m-d"); ?>" 
-                                max="<?php echo date("Y-m-d", 
-                                strtotime('+7 days'));?>">
-                                <br> <br>
-                                <button class="btn btn-success btn-lg btn-block">Buscar</button>
-                                
-                                
-                                <table class=" table table-striped table-hover">
-
-                                    <thead>
-                                    <tr>
-                                        <th width="200">Sala</th>
-                                        <th width="200">Status</th>
-                                        <th width="200">Reservada por</th>
-                                    
-                                    </tr>
-                                    </thead>
-
-                                    <tr>
-                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Nome da Sala" value="Sala01"></th>
-                                        <th width="200"><input type="text" readonly class="form-control" id="name" placeholder="Ninguém" value=""></th>
-                                        
-                                    
-                                    </tr>
-                                    
-                                    
-                                </table>
-
-                                
-                                </div>
+                        
 
                               </div>
                         
