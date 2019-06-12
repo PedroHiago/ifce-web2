@@ -66,16 +66,6 @@
                             </div>
                         </div>
                     </form>
-                    <a href="/user/index">
-                                <button type="submit" class="btn btn-primary">
-                                  User
-                                </button>
-                                </a>
-                    <a href="/admin">
-                                <button type="submit" class="btn btn-primary">
-                                  Admin
-                                </button>
-                                </a>
                                 
                 </div>
             </div>
